@@ -53,8 +53,8 @@ Implement the strategy/protocol of your choice where each guest is represented b
 
 # Proof of Correctness:
 
-Worth mentioning:
-Guest == thread
+Worth mentioning: <br/>
+Guest == thread <br/>
 Labrynth == thread run() while-loop
 
 Problem 1: 
@@ -69,7 +69,7 @@ Ubuntu was used for compiling
 
 My experimental evaluation throughout this assignment was not as tedious as the first programming assignment. Race conditions would occur at times, as well as infinite loops cause by unclosed conditions. In terms of run-time, both solutions seem to run at reasonable times. The vase solution seemed to run a bit slower than the birthday party, but it makes sense.
 
-At n = 1000, MinotaurCrystalVase ran at ~5000ms \n
+At n = 1000, MinotaurCrystalVase ran at ~5000ms <br/>
 at n = 1000, MinotaurBirthdayParty ran at ~300ms 
 
 I believed my runtimes were slowed down a bit due to the fact that I used Ubuntu to compile and run my solutions. I believe that they will run faster if ran natively.

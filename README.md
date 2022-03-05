@@ -1,8 +1,8 @@
 # Multithreaded-Minotaur
 Programming Assignment 2 for COP 4520. Coded in Java using Visual Studio Code
 
-Filenames:
-Problem 1: MinotaurBirthdayParty.java
+Filenames:<br/>
+Problem 1: MinotaurBirthdayParty.java <br/>
 Problem 2: MinotaurCrystalVase.java
 
 # Run Instructions:
@@ -57,14 +57,18 @@ Worth mentioning: <br/>
 Guest == thread <br/>
 Labrynth == thread run() while-loop
 
-Problem 1: 
+Problem 1: <br/>
 My implementation uses a Reentrant Lock to ensure that only one thread is in the "labrynth" while-loop at a time. The guests are able to enter the labrynth multiple times, as stated in the problem description. The strategy behind finding out at what point every guest has eaten a cake is determined before anyting begins. A guest at random is chosen to be the "decider" guest. This decider guest will keep track of how many times he finds the cake missing in the labrynth. The other guests should only eat the cake one time and one time only. Using this strategy, the guests won't have to  communicate to eachother. Once the decider guest finds the cake missing an "n guests" amount of times, he can deduce that all guests have eaten the cake once, and announces it to the Minotaur, ending the game and breaking all threads out of their while-loops.
 
-Problem 2:
+Problem 2: <br/>
+
+The 1st strategy discussed in the project description really has no advantages to the other two strategies as guests would just be prone to crowding around the door and they wont have a garauntee that they will even be able to have access to the room at some point. <br/>
+The 3rd strategy had the disadvantage of a slow runtime since guests would be fighting over a queue-like structure. I found strategy 2 to be the best for the purposes of this problem.
+
 For this problem, I implemented the second strategy that is mentioned in the problem statement. I used a boolean variable called availableBusy to let each guest know if the room was available or not. If the room wasnt available, they will re-loop and wait until it becomes available. Once the guest sees that the room is availabe, they will enter the room, make sure to change the availableBusy variable to false, indicating that the room is busy. The guest will then be checked to see if they have seen the vase yet, if not, change the threads hasSeen variable to true. Otherwise, wait for a bit and then leave the room, setting the availablility of the room to true on its way out. Once it is determined that all guests have seen the vase once (AKA hasSeen is true for all threads) then the program will output and terminate.
 
 # Experimental Evaluation:
-Processor used for testing: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz (8 CPUs), ~2.8GHz
+Processor used for testing: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz (8 CPUs), ~2.8GHz <br/>
 Ubuntu was used for compiling
 
 My experimental evaluation throughout this assignment was not as tedious as the first programming assignment. Race conditions would occur at times, as well as infinite loops cause by unclosed conditions. In terms of run-time, both solutions seem to run at reasonable times. The vase solution seemed to run a bit slower than the birthday party, but it makes sense.
